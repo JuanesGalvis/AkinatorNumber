@@ -1,7 +1,7 @@
 {
   "name": "taller-sockets-threads",
   "version": "1.0.0",
-  "description": "Taller #3 para programación distribuida y paralela",
+  "description": "¿Eres Akinator? adivina el número (99% Imposible 🥵 - 1% de fe 😎)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
