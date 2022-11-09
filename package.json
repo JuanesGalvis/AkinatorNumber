@@ -1,0 +1,18 @@
+{
+  "name": "taller-sockets-threads",
+  "version": "1.0.0",
+  "description": "Taller #3 para programación distribuida y paralela",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cluster": "^0.7.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "redis": "^4.4.0",
+    "socket.io": "^4.5.3"
+  }
+}
