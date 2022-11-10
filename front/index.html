@@ -1,22 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taller 3</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./button.css">
+    <title>Saw Number</title>
+    <link type="image/png" sizes="120x120" rel="icon" href="saw.png">
 </head>
-<body>
-    <h1>WEB SOCKET</h1>
-    <input type="number" name="option1" id="option1">
-    <input type="number" name="option2" id="option2">
-    <input type="number" name="option3" id="option3">
-    <input type="number" name="option4" id="option4">
-    <button id="send"> Enviar </button>
 
-    <section id="result"></section>
+<body>
+    <div class="containerTitles">
+        <h1>BIENVENIDO!</h1>
+        <h2>👹 QUE COMIENCE EL JUEGO 👹</h2>
+    </div>
+
+    <div class="containerPrincipal">
+        <div class="containerNumbers">
+            <div class="saw">
+                <img src="./saw.gif" alt="Saw en bicicleta">
+            </div>
+
+            <div class="numbers">
+                <div class="buttonsNumbers">
+                    <h2 class="titleNumbers">NÚMEROS</h2>
+                    <button id="button0" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        0
+                    </button>
+                    <button id="button1" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        1
+                    </button>
+                    <button id="button2" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        2
+                    </button>
+                    <button id="button3" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        3
+                    </button>
+                    <button id="button4" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        4
+                    </button>
+                    <button id="button5" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        5
+                    </button>
+                    <button id="button6" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        6
+                    </button>
+                    <button id="button7" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        7
+                    </button>
+                    <button id="button8" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        8
+                    </button>
+                    <button id="button9" class="animated-button1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        9
+                    </button>
+                </div>
+
+                <div class="containerInputs">
+                    <h2 class="titleCasillas">CASILLAS</h2>
+                    <button id="option1" class="inputBorder selected"></button>
+                    <button id="option2" class="inputBorder"></button>
+                    <button id="option3" class="inputBorder"></button>
+                    <button id="option4" class="inputBorder"></button>
+                </div>
+            </div>
+
+            <div class="error"></div>
+
+            <button id="send" class="animated-button1">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                ENVIAR
+            </button>
+        </div>
+
+        <div class="containerResults">
+            <section id="resultContainer">
+                <h3>💀 RESULTADOS 💀</h3>
+                <p id="result"></p>
+            </section>
+        </div>
+    </div>
 
     <script src="/socket.io/socket.io.min.js"></script>
     <script src="./index.js"></script>
 </body>
+
 </html>

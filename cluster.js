@@ -7,7 +7,6 @@ const { start } = require('./index');
 
 let worker;
 
-
 // Validar el hilo principal/master
 if (cluster.isMaster) {
 
@@ -129,8 +128,8 @@ if (cluster.isMaster) {
             console.log(`El worker ${position + 1} es el que tiene los 4 resultados`);
             client.set(`Result-${clientId}`, Result);
             let vidasFinal = await client.get(`vidas-${clientId}`);
-            
-            // ???
+
+            // Solo funciona con el ultimo Hilo (4)
             workers[4].send({ result: Result, values: JSON.stringify(ArrayValues), client: clientId, vidas: vidasFinal });
 
         }

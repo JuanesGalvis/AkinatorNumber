@@ -24,29 +24,29 @@ exports.start = function start() {
     // WebSocket - evento al conectarse desde un cliente
     io.on('connection', (socket) => {
 
-        socket.on('disconnect', () => {
-            process.send({ cmd: 'deleteClient', id: socket.id });
-            console.log(`CLIENTE ${socket.id} DESCONECTADO`);
-        })
-
         console.log(`NUEVA CONEXIÓN (SOCKET.IO - ${socket.id})`);
+
         // Notificar al hilo principal para generar los números aleatorios
         process.send({ cmd: 'notifyRequest', id: socket.id });
 
-        // // WebSocket - evento al escuchar el envío de valores desde el cliente
+        // WebSocket - evento al escuchar el envío de valores desde el cliente
         socket.on('client:value', data => {
             // Emitir el evento validateNumber a master para validar los números enviados
             process.send({ cmd: 'validateNumber', values: data, id: socket.id });
         })
 
+        // WebSocket - evento al salirse de la aplicación
+        socket.on('disconnect', () => {
+            process.send({ cmd: 'deleteClient', id: socket.id });
+            console.log(`CLIENTE ${socket.id} DESCONECTADO`);
+        })
+
         // Escuchar el evento cuando el hilo principal devuelva un resultado
         process.on('message', async function (msg) {
 
-            
             let { result, values, client, vidas } = msg;
-            
+
             if (result) {
-                // console.log(`Dentro`);
 
                 if (result === "1111" && vidas > 0) {
 
@@ -62,12 +62,11 @@ exports.start = function start() {
 
                     // Limpiar los valores en redis
                     await clientRedis.connect();
-                    clientRedis.set(`vidas-${client}`, vidas - 1 );
+                    clientRedis.set(`vidas-${client}`, vidas - 1);
 
-                    io.to(client).emit('server:result', result, vidas - 1 );
+                    io.to(client).emit('server:result', result, vidas - 1);
 
                 } else {
-
                     io.to(client).emit('server:result', `😭 PERDISTE 😭 - ERA: ${values}`, vidas);
                 }
 
