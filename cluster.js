@@ -129,8 +129,11 @@ if (cluster.isMaster) {
             client.set(`Result-${clientId}`, Result);
             let vidasFinal = await client.get(`vidas-${clientId}`);
 
-            // Solo funciona con el ultimo Hilo (4)
-            workers[4].send({ result: Result, values: JSON.stringify(ArrayValues), client: clientId, vidas: vidasFinal });
+            for (const id in cluster.workers) {
+                // Solo funciona con el ultimo Hilo (4)
+                let currentWorker = cluster.workers[id];
+                currentWorker.send({ result: Result, values: JSON.stringify(ArrayValues), client: clientId, vidas: vidasFinal });
+            }
 
         }
     }
